@@ -12,6 +12,11 @@ describe("object-path baseline (pre safeObjectPath)", () => {
             expect(objectPath.get(obj, "structure.readme")).toBe("README.md");
         });
 
+        test("accepts array path", () => {
+            const obj = { structure: { readme: "README.md" } };
+            expect(objectPath.get(obj, ["structure", "readme"])).toBe("README.md");
+        });
+
         test("returns default when path missing", () => {
             const obj = { a: 1 };
             expect(objectPath.get(obj, "b", "fallback")).toBe("fallback");
@@ -62,6 +67,12 @@ describe("object-path baseline (pre safeObjectPath)", () => {
             expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
         });
 
+        test("accepts array path", () => {
+            const obj: Record<string, unknown> = {};
+            objectPath.set(obj, ["structure", "readme"], "INTRO.md");
+            expect(obj).toEqual({ structure: { readme: "INTRO.md" } });
+        });
+
         test("overwrites existing nested value", () => {
             const obj: Record<string, unknown> = { structure: { readme: "A.md" } };
             objectPath.set(obj, "structure.readme", "B.md");
@@ -71,6 +82,12 @@ describe("object-path baseline (pre safeObjectPath)", () => {
         test("throws when intermediate is a non-object (object-path)", () => {
             const obj: Record<string, unknown> = { a: "was-string" };
             expect(() => objectPath.set(obj, "a.b", 1)).toThrow();
+        });
+
+        test("throws when intermediate is null (object-path / native JS)", () => {
+            const obj: Record<string, unknown> = { a: null };
+            expect(() => objectPath.set(obj, "a.b", 1)).toThrow();
+            expect(obj.a).toBeNull();
         });
 
         test("uses array index segments like object-path", () => {
