@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778940705606,
+  "lastUpdate": 1778943702955,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12336,6 +12336,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.2,
             "range": "±0.65%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "df453be0265312e7e1c3f8b5034cc6b7c00800eb",
+          "message": "feat: migrate Docker image registry from Docker Hub to GHCR (#512)\n\nSwitch the published Docker image from `honkit/honkit` on Docker Hub to\n`ghcr.io/honkit/honkit` on GitHub Container Registry. This removes the\nneed for Docker Hub credentials (DOCKER_HUB_USER/DOCKER_HUB_TOKEN) and\nuses the built-in GITHUB_TOKEN for authentication.\n\nCo-authored-by: Claude Opus 4.7 (1M context) <noreply@anthropic.com>",
+          "timestamp": "2026-05-17T00:00:09+09:00",
+          "tree_id": "061c9128f5f79734aa7561a28d6bda08eb980cbe",
+          "url": "https://github.com/honkit/honkit/commit/df453be0265312e7e1c3f8b5034cc6b7c00800eb"
+        },
+        "date": 1778943701653,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±0.88%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
