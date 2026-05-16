@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774186459111,
+  "lastUpdate": 1778927827634,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12243,6 +12243,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.17,
             "range": "±0.39%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "eric@ericmartindale.com",
+            "name": "Eric Martindale",
+            "username": "martindale"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7a1ff1094bf0742b981c63b4f17904141b8b8882",
+          "message": "Refactor Out Insecure Dependencies (#508)\n\n* Add tests for Promise, objectPath\n\n* refactor(honkit): drop q, object-path, moment, urijs\n\nReplace q with a native Promise shim (promise.ts), object-path with safeObjectPath for config paths, moment with dayjs in defaultFilters, and urijs-free git+ URL parsing in git.ts.\n\nContract tests from the prior commit still pass (promise.contract, objectPath.contract). Remove promise.env-load.test.ts — it only covered Q.longStackSupport at load time (PR #508 discussion r3231797881). Drop jest.contract coverageThreshold so test:contract passes with the shim under existing tests.\n\nAdd direct safeObjectPath unit tests. object-path remains a devDependency for the baseline contract only.\n\nSuggested PR description update:\n- Runtime removals: q, object-path, moment, urijs\n- Additions: dayjs, js-yaml ^4, safeObjectPath helper, native promise surface\n- Equivalence: contract tests + snapshot-honkit / integration suite\n- fabric-http: run npm install in /Users/eric/fabric-http to capture transitive deprecation warnings motivating consumers",
+          "timestamp": "2026-05-16T19:35:36+09:00",
+          "tree_id": "21c07fc3b4ad0b227db9595e3969ad2f60070988",
+          "url": "https://github.com/honkit/honkit/commit/7a1ff1094bf0742b981c63b4f17904141b8b8882"
+        },
+        "date": 1778927826540,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±0.91%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
