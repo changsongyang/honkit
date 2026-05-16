@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778943702955,
+  "lastUpdate": 1778943727784,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12367,6 +12367,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.2,
             "range": "±0.88%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "d699190b4515fe46bbc3a99b40e74bd8dada3edd",
+          "message": "chore(deps): bump brace-expansion from 1.1.12 to 5.0.6 (#509)\n\nBumps [brace-expansion](https://github.com/juliangruber/brace-expansion) from 1.1.12 to 5.0.6.\n- [Release notes](https://github.com/juliangruber/brace-expansion/releases)\n- [Commits](https://github.com/juliangruber/brace-expansion/compare/v1.1.12...v5.0.6)\n\n---\nupdated-dependencies:\n- dependency-name: brace-expansion\n  dependency-version: 5.0.6\n  dependency-type: indirect\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2026-05-17T00:00:39+09:00",
+          "tree_id": "7a4bc3631214f7cbd637cab60fe7d6819f415274",
+          "url": "https://github.com/honkit/honkit/commit/d699190b4515fe46bbc3a99b40e74bd8dada3edd"
+        },
+        "date": 1778943726775,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±1.29%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
