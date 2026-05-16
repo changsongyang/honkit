@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778927827634,
+  "lastUpdate": 1778940170110,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12274,6 +12274,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.2,
             "range": "±0.91%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "be1c9894460db8a0df5c1b7216546adba5675ed2",
+          "message": "fix: address review feedback from PR #508 (#510)\n\n* fix: address review feedback from PR #508\n\nFollow-up to #508 addressing Copilot review comments.\n\n- safeObjectPath: reject whole path containing __proto__/constructor/prototype\n  instead of filtering segments (prevented `__proto__.x` from collapsing to `x`)\n- safeObjectPath: use Object.prototype.hasOwnProperty.call so lookups do not\n  descend into inherited prototype properties\n- safeObjectPath: setAtPath now throws on non-object scalar intermediates and\n  returns undefined, matching object-path semantics\n- safeObjectPath: accept `string | string[]` paths to match object-path API\n- encodeConfig: align with new setAtPath void return type\n- defaultFilters: load dayjs advancedFormat plugin so `Do` ordinal token works\n  (e.g. `MMMM Do YYYY` now renders `May 16th 2026`)\n- package.json: alphabetize dayjs position in dependencies\n- git.ts: fix comment wording \"infos\" -> \"information\"\n- tests: cover new own-property guard, unsafe path rejection, and array path\n\n* fix(safeObjectPath): check enumerability not just ownership\n\n`hasOwnProperty` returns true for non-enumerable own properties, so the\nprior `hasOwn` guard let `getAtPath` and `setAtPath` still descend into\nnon-enumerable own data. Switch to `Object.prototype.propertyIsEnumerable`\nso descent is genuinely limited to own enumerable properties, matching the\ndocumented contract.\n\nAdds tests covering non-enumerable own reads (treated as missing) and\nnon-enumerable own intermediates in writes (existing value left untouched).\n\n* fix(safeObjectPath): match object-path own-check; throw on null intermediate\n\nAdjust the safeObjectPath contract so the divergence from object-path is\nlimited to the path-level rejection of __proto__/constructor/prototype.\n\n- Switch back to hasOwnProperty for own-property descent. object-path itself\n  uses hasOwnProperty (does not check enumerability), so propertyIsEnumerable\n  was stricter than the original library. Matching object-path is the\n  intended contract.\n- setAtPath now throws when an intermediate value is null. object-path threw\n  here via the native \"Cannot set properties of null\" TypeError; the prior\n  implementation silently overwrote null with a fresh container.\n- Missing/undefined intermediates are still auto-created (object-path\n  behavior); only existing scalar values (including null) throw.\n\nTests updated to cover the null-intermediate throw on both the new helper\nand the object-path baseline.\n\n* fix(safeObjectPath): treat array path entries as literal keys\n\nWhen `path` is a `string[]`, each entry is a caller-supplied property name,\nincluding the empty string. Previously the segment normalizer trimmed and\nfiltered empty entries uniformly, which rewrote paths like `[\"\", \"key\"]`\ninto just `[\"key\"]` and addressed an unrelated property.\n\nNow whitespace trimming and empty-segment filtering only apply to string\npaths (where they remove dot-split artifacts). Array entries are passed\nthrough verbatim, matching object-path's lookup behavior.",
+          "timestamp": "2026-05-16T23:01:14+09:00",
+          "tree_id": "f97ad6ed9555642f0609cbdeee03ca6297c6b069",
+          "url": "https://github.com/honkit/honkit/commit/be1c9894460db8a0df5c1b7216546adba5675ed2"
+        },
+        "date": 1778940168775,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.19,
+            "range": "±2.36%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
