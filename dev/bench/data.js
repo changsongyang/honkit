@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1778943880328,
+  "lastUpdate": 1779713030267,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12429,6 +12429,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.21,
             "range": "±0.76%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "chick.p.1120@gmail.com",
+            "name": "piyo",
+            "username": "chick-p"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "f428c6134188596da505e704a08d19fe36637435",
+          "message": "fix(api): replace .get(\"content\") with .then() in renderBlock and renderInline (#517)\n\n`renderBlock` and `renderInline` called `.get(\"content\")` on the promise\nreturned by `parsePage()` / `parseInline()`, relying on q's built-in\nproperty-access helper. Since #508 removed q and replaced it with\n`extendPromise`, `.get()` is no longer available on those promises,\nproperty-access helper. Since #508 removed q and replaced it with\n `extendPromise`, `.get()` is no longer available on those promises,\ncausing a TypeError at runtime when any plugin calls `this.renderBlock()`.\n\nReplace with `.then((result) => result.content)` to use the standard",
+          "timestamp": "2026-05-25T21:42:20+09:00",
+          "tree_id": "da197119ca98761566d0032d734ebcfa3abd4d78",
+          "url": "https://github.com/honkit/honkit/commit/f428c6134188596da505e704a08d19fe36637435"
+        },
+        "date": 1779713028799,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±2.27%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
