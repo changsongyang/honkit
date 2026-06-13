@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1779713385666,
+  "lastUpdate": 1781386608526,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12491,6 +12491,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.19,
             "range": "±1.08%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "7ed7ecce24ae7944009db0e36c3190aede9a6ad2",
+          "message": "chore(deps): bump tmp from 0.2.4 to 0.2.6 (#520)\n\nBumps [tmp](https://github.com/raszi/node-tmp) from 0.2.4 to 0.2.6.\n- [Changelog](https://github.com/raszi/node-tmp/blob/master/CHANGELOG.md)\n- [Commits](https://github.com/raszi/node-tmp/compare/v0.2.4...v0.2.6)\n\n---\nupdated-dependencies:\n- dependency-name: tmp\n  dependency-version: 0.2.6\n  dependency-type: direct:production\n...\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2026-06-14T06:35:20+09:00",
+          "tree_id": "b9b94e408b86be4b62b5d893ba010321bd6c04f1",
+          "url": "https://github.com/honkit/honkit/commit/7ed7ecce24ae7944009db0e36c3190aede9a6ad2"
+        },
+        "date": 1781386608016,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.2,
+            "range": "±0.57%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
