@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781386608526,
+  "lastUpdate": 1781404838976,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12522,6 +12522,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.2,
             "range": "±0.57%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "azu@users.noreply.github.com",
+            "name": "azu",
+            "username": "azu"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "fa734452b095697426722bf94139ac474cfebca4",
+          "message": "Remove tmp dependency and switch tests to native temp helpers (#523)\n\n* Replace tmp dependency with built-in temp dir helpers\n\n* fix: stabilize windows watch tests\n\n* fix: wait for watcher before serving\n\n* fix: keep tmp replacement scoped\n\n* fix: normalize test temp paths",
+          "timestamp": "2026-06-14T11:39:08+09:00",
+          "tree_id": "a2e7d8e9a5c422832900a3b9f812dbb6e2069a2c",
+          "url": "https://github.com/honkit/honkit/commit/fa734452b095697426722bf94139ac474cfebca4"
+        },
+        "date": 1781404837996,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.19,
+            "range": "±0.76%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
