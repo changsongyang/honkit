@@ -1,8 +1,9 @@
 import fs from "fs";
 import mkdirp from "mkdirp";
 import destroy from "destroy";
-import tmp from "tmp";
 import path from "path";
+import os from "os";
+import crypto from "crypto";
 import cp from "cp";
 import cpr from "cpr";
 import Promise from "./promise";
@@ -53,18 +54,51 @@ function fileExists(filename) {
     return d.promise;
 }
 
+function getTmpDir() {
+    try {
+        return fs.realpathSync.native(os.tmpdir());
+    } catch {
+        return os.tmpdir();
+    }
+}
+
 // Generate temporary file
-function genTmpFile(opts) {
-    return Promise.nfcall(tmp.file, opts).get(0);
+function genTmpFile() {
+    return Promise(
+        (async () => {
+            const tmpDir = getTmpDir();
+            for (let i = 0; i < 10; i++) {
+                const name = `honkit-${process.pid}-${Date.now()}-${crypto.randomBytes(6).toString("hex")}`;
+                const filePath = path.join(tmpDir, name);
+                let handle: fs.promises.FileHandle | undefined;
+
+                try {
+                    handle = await fs.promises.open(
+                        filePath,
+                        fs.constants.O_CREAT | fs.constants.O_EXCL | fs.constants.O_RDWR,
+                        0o600
+                    );
+                    return filePath;
+                } catch (error) {
+                    if ((error as NodeJS.ErrnoException).code !== "EEXIST") {
+                        throw error;
+                    }
+                } finally {
+                    await handle?.close();
+                }
+            }
+
+            throw new Error("Could not create a unique temporary file");
+        })()
+    );
 }
 
 /**
  * Generate temporary dir
  * @deprecated use tmpdir.ts
- * @param opts
  */
-function genTmpDir(opts) {
-    return Promise.nfcall(tmp.dir, opts).get(0);
+function genTmpDir() {
+    return Promise(fs.promises.mkdtemp(path.join(getTmpDir(), "honkit-")));
 }
 
 // https://stackoverflow.com/questions/11944932/how-to-download-a-file-with-node-js-without-using-third-party-libraries
