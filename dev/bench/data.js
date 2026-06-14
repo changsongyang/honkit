@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1781404838976,
+  "lastUpdate": 1781406860702,
   "repoUrl": "https://github.com/honkit/honkit",
   "entries": {
     "HonKit benchmark": [
@@ -12553,6 +12553,37 @@ window.BENCHMARK_DATA = {
             "name": "run honkit build",
             "value": 0.19,
             "range": "±0.76%",
+            "unit": "ops/sec",
+            "extra": "5 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "41898282+github-actions[bot]@users.noreply.github.com",
+            "name": "github-actions[bot]",
+            "username": "github-actions[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "59eb5595364411d88d1be485b4e0bb6ef0160eae",
+          "message": "Release v6.2.2 (#524)\n\n<!-- Release notes generated using configuration in .github/release.yml\nat master -->\n\n## What's Changed\n### Refactoring\n* Remove tmp dependency and switch tests to native temp helpers by @azu\nin https://github.com/honkit/honkit/pull/523\n### Dependency Updates\n* chore(deps): bump tmp from 0.2.4 to 0.2.6 by @dependabot[bot] in\nhttps://github.com/honkit/honkit/pull/520\n\n\n**Full Changelog**:\nhttps://github.com/honkit/honkit/compare/v6.2.1...v6.2.2\n\nCo-authored-by: azu <19714+azu@users.noreply.github.com>",
+          "timestamp": "2026-06-14T12:12:48+09:00",
+          "tree_id": "9330a3f1ba98ac662d4767ad9749ce2b18785419",
+          "url": "https://github.com/honkit/honkit/commit/59eb5595364411d88d1be485b4e0bb6ef0160eae"
+        },
+        "date": 1781406860169,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "run honkit build",
+            "value": 0.21,
+            "range": "±0.63%",
             "unit": "ops/sec",
             "extra": "5 samples"
           }
